@@ -2,9 +2,10 @@ package com.luv2code.springsecurity.demo.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
 	@Id
@@ -31,7 +32,7 @@ public class User {
 	@JoinTable(name = "users_roles", 
 	joinColumns = @JoinColumn(name = "user_id"), 
 	inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Collection<Role> roles;
+	private List<Role> roles;
 
 	public User() {
 	}
@@ -45,7 +46,7 @@ public class User {
 	}
 
 	public User(String userName, String password, String firstName, String lastName, String email,
-			Collection<Role> roles) {
+			List<Role> roles) {
 		this.userName = userName;
 		this.password = password;
 		this.firstName = firstName;
@@ -102,11 +103,11 @@ public class User {
 		this.email = email;
 	}
 
-	public Collection<Role> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Collection<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 

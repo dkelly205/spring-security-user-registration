@@ -4,12 +4,12 @@ CREATE DATABASE  IF NOT EXISTS `spring_security_custom_user_demo`;
 USE `spring_security_custom_user_demo`;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` char(80) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 -- NOTE: The passwords are encrypted using BCrypt
 --
@@ -29,7 +29,7 @@ CREATE TABLE `user` (
 -- Default passwords here are: fun123
 --
 
-INSERT INTO `user` (username,password,first_name,last_name,email)
+INSERT INTO `users` (username,password,first_name,last_name,email)
 VALUES 
 ('john','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','John','Doe','john@luv2code.com'),
 ('mary','$2a$04$eFytJDGtjbThXa80FyOOBuFdK2IwjyWefYkMpiBEFlpBwDH.5PM0K','Mary','Public','mary@luv2code.com'),
@@ -40,9 +40,9 @@ VALUES
 -- Table structure for table `role`
 --
 
-DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `roles`;
 
-CREATE TABLE `role` (
+CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -52,7 +52,7 @@ CREATE TABLE `role` (
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `role` (name)
+INSERT INTO `roles` (name)
 VALUES 
 ('ROLE_EMPLOYEE'),('ROLE_MANAGER'),('ROLE_ADMIN');
 
@@ -71,11 +71,11 @@ CREATE TABLE `users_roles` (
   KEY `FK_ROLE_idx` (`role_id`),
   
   CONSTRAINT `FK_USER_05` FOREIGN KEY (`user_id`) 
-  REFERENCES `user` (`id`) 
+  REFERENCES `users` (`id`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION,
   
   CONSTRAINT `FK_ROLE` FOREIGN KEY (`role_id`) 
-  REFERENCES `role` (`id`) 
+  REFERENCES `roles` (`id`) 
   ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

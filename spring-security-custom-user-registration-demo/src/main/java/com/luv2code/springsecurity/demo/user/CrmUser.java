@@ -35,6 +35,16 @@ public class CrmUser {
 	@NotNull(message = "is required")
 	@Size(min = 1, message = "is required")
 	private String email;
+	
+	private String formRole;
+
+	public String getFormRole() {
+		return formRole;
+	}
+
+	public void setFormRole(String formRole) {
+		this.formRole = formRole;
+	}
 
 	public CrmUser() {
 

@@ -106,6 +106,11 @@
 							<form:input path="email" placeholder="email (*)" class="form-control" />
 						</div>
 						
+						<!-- Roles -->
+						<div style="margin-bottom: 25px" class="input-group">
+							<form:select path="formRole" items="${roles}" class="form-control" />
+						</div>
+						
 						
 
 						<!-- Register Button -->
